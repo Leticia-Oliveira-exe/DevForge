@@ -17,14 +17,21 @@ export class Cadastro {
     nome: '',
     email: '',
     senha: '',
-    confirmaSenha: ''
+    confirmaSenha: '',
+    termos: false 
   };
 
   // Injeta o HttpClient para fazer requisições e o Router para navegar após o cadastro
   constructor(private http: HttpClient, private router: Router) {}
 
   onCadastrar() {
-    // Validação básica de senhas iguais no Front-end
+    
+    if (!this.dadosCadastro.termos) {
+      alert("Você precisa aceitar os termos de uso para criar uma conta!");
+      return;
+    }
+
+    // Validação básica de senhas 
     if (this.dadosCadastro.senha !== this.dadosCadastro.confirmaSenha) {
       alert("As senhas não coincidem!");
       return;
@@ -49,7 +56,7 @@ export class Cadastro {
         this.router.navigate(['/home']); 
       },
       error: (erro) => {
-        // 🔥 CORREÇÃO DE SEGURANÇA PARA A APRESENTAÇÃO: 
+        
         // Se o servidor der 404 ou falhar, o Angular assume o controle e salva os dados localmente no navegador!
         console.warn("Servidor externo indisponível ou rota incorreta. Salvando em modo offline/local.");
         
