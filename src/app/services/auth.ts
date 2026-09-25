@@ -4,7 +4,7 @@ import { CanActivateFn, Router } from '@angular/router';
 export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   
-  // 🔐 A MUDANÇA REAL: Lê se existe um usuário autenticado gravado na memória do navegador
+  // Lê se existe um usuário autenticado gravado na memória do navegador
   const usuarioLogado = localStorage.getItem('usuario');
 
   if (usuarioLogado) {

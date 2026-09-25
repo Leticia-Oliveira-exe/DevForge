@@ -28,9 +28,7 @@
   font-family: system-ui, sans-serif;
 }
 
-/* ==========================================================================
-   ESTRUTURA DO GRID EM COLUNAS PARALELAS
-   ========================================================================== */
+/* ESTRUTURA DO GRID EM COLUNAS PARALELAS */
 .marketplace-grid {
   display: grid;
   /* Distribui os cards lado a lado automaticamente dependendo do tamanho da tela */
@@ -40,7 +38,7 @@
 }
 
 .market-api-card {
-  background-color: #121e24; /* Fundo cinza escuro igual ao restante do projeto */
+  background-color: #121e24; 
   border: 1px solid #1c323d;
   border-radius: 12px;
   padding: 20px;
@@ -54,7 +52,7 @@
 
 .market-api-card:hover {
   transform: translateY(-2px);
-  border-color: #2dd4bf; /* Borda acende em verde-água no foco */
+  border-color: #2dd4bf; 
 }
 
 .card-header-flex {

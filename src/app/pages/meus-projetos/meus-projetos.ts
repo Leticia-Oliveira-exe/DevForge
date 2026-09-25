@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // 👈 Essencial para sumir com os avisos amarelos do HTML
+import { CommonModule } from '@angular/common'; 
 import { FormsModule } from '@angular/forms';
 
 interface ApiProjeto {
@@ -17,7 +17,7 @@ interface ApiProjeto {
 @Component({
   selector: 'app-meus-projetos',
   standalone: true,
-  imports: [CommonModule, FormsModule], // 👈 Ajustado para aceitar as diretivas do seu HTML
+  imports: [CommonModule, FormsModule], 
   templateUrl: './meus-projetos.html',
   styleUrl: './meus-projetos.css'
 })

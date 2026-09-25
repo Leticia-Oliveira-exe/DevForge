@@ -16,11 +16,11 @@ interface ApiProjeto {
 }
 
 @Component({
-  selector: 'app-home', // 👈 CORRIGIDO: Voltou a ser o seletor nativo da Home
+  selector: 'app-home', 
   standalone: true,
   imports: [CommonModule, Menu], 
-  templateUrl: './home.html', // 👈 CORRIGIDO: Aponta para o html da Home
-  styleUrl: './home.css', // 👈 CORRIGIDO: Aponta para o css da Home
+  templateUrl: './home.html',
+  styleUrl: './home.css', 
 })
 export class Home implements OnInit {
   // Listas reativas para alimentar cada catálogo na sua tela
@@ -39,11 +39,11 @@ export class Home implements OnInit {
     this.carregarCatalogosDoSistema();
   }
 
-  // 🛠️ ALTERADO APENAS O NECESSÁRIO: Blindagem com injeção automática de dados iniciais com as fotos corretas
+ 
   carregarCatalogosDoSistema() {
     let dados = localStorage.getItem('minhas_apis');
     
-    // Se o LocalStorage estiver vazio (primeiro acesso no link da Vercel), preenche com os cards padrão na hora
+    // Se o LocalStorage estiver vazio (primeiro acesso no link da Vercel)
     if (!dados) {
       const apisIniciais: ApiProjeto[] = [
         {

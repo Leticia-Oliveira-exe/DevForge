@@ -12,7 +12,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class Login {
   
-  // Objeto reativo conectado com os inputs do seu HTML
+  // Objeto reativo conectado com os inputs do HTML
   dadosLogin = {
     nome: '',
     senha: '',

@@ -1,14 +1,12 @@
 .home-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 100px 20px 40px 20px; /* Padding extra no topo para o menu fixo não cobrir o carrossel */
+  padding: 100px 20px 40px 20px; 
   font-family: system-ui, -apple-system, sans-serif;
   color: #ffffff;
 }
 
-/* ==========================================================================
-   ESTILIZAÇÃO DO CARROSSEL SUPERIOR
-   ========================================================================== */
+/*ESTILIZAÇÃO DO CARROSSEL SUPERIOR */
 .carrossel-banner-section {
   margin-bottom: 50px;
   position: relative;
@@ -128,9 +126,7 @@
   background-color: #00ff66;
 }
 
-/* ==========================================================================
-   ESTILIZAÇÃO DOS CATÁLOGOS HORIZONTAIS
-   ========================================================================== */
+/*ESTILIZAÇÃO DOS CATÁLOGOS HORIZONTAIS*/
 .catalogos-vertical-stack {
   display: flex;
   flex-direction: column;
@@ -150,7 +146,7 @@
   font-weight: 400;
 }
 
-/* Cria a fileira horizontal deslizante estilo Netflix */
+
 .catalogo-cards-scroll {
   display: flex;
   gap: 20px;
@@ -301,12 +297,10 @@
   transition: all 0.2s;
 }
 
-/* ==========================================================================
-   RESPONSIVIDADE DA HOME (CELULARES E TABLETS)
-   ========================================================================== */
+/* RESPONSIVIDADE DA HOME (CELULARES E TABLETS)*/
 @media (max-width: 768px) {
   .home-container {
-    padding: 80px 15px 20px 15px; /* Reduz espaçamento do topo */
+    padding: 80px 15px 20px 15px; 
   }
 
   /* Faz o carrossel se ajustar ao tamanho do celular */

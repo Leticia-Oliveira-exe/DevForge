@@ -1,6 +1,4 @@
-/* ==========================================
-   1. REGULAGEM DO ESCALA E POSICIONAMENTO (ANGULAR STYLE)
-   ========================================== */
+/* REGULAGEM DO ESCALA E POSICIONAMENTO (ANGULAR STYLE) */
 :host {
     display: flex;
     justify-content: center;
@@ -10,9 +8,7 @@
     width: 100%;
 }
 
-/* ==========================================
-   2. DESIGN DO CARD BRANCO -> CONVERTIDO PARA VIDRO ESCURO
-   ========================================== */
+/* ESIGN DO CARD BRANCO -> CONVERTIDO PARA VIDRO ESCURO */
 .login-wrapper {
     background-color: rgba(0, 0, 0, 0.8); /* Fundo preto translúcido */
     backdrop-filter: blur(10px);          /* Efeito de desfoque de vidro fosco */
@@ -29,8 +25,8 @@
 .card-titulo {
     text-align: center;
     font-size: 24px;
-    color: #00ff66; /* Mudado para o verde neon do seu menu */
-    margin-bottom: 24px; /* Espaço entre o título e o primeiro input */
+    color: #00ff66; 
+    margin-bottom: 24px;
     font-weight: 600;
     letter-spacing: 1px;
 }
@@ -41,9 +37,7 @@ form {
     gap: 16px;
 }
 
-/* ==========================================
-   3. ESTILO DOS CAMPOS (INPUTS) E BOTÃO
-   ========================================== */
+/*ESTILO DOS CAMPOS (INPUTS) E BOTÃO*/
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -88,9 +82,7 @@ button:active {
     transform: scale(0.98); 
 }
 
-/* ==========================================
-   4. ESTILO DA CAIXA DE TERMOS E LINK
-   ========================================== */
+/* ESTILO DA CAIXA DE TERMOS E LINK*/
 .termos-box {
     display: flex;
     align-items: center;
@@ -113,9 +105,7 @@ button:active {
     text-decoration: underline;
 }
 
-/* ==========================================
-   5. DESIGN INTEGRAL DO BOTÃO SWITCH
-   ========================================== */
+/*DESIGN INTEGRAL DO BOTÃO SWITCH */
 .switch-container {
     position: relative;
     display: inline-block;
@@ -159,9 +149,7 @@ button:active {
     transform: translateX(18px);
 }
 
-/* ==========================================
-   6. SEÇÃO CENTRAL (OU ENTRE COM)
-   ========================================== */
+/*SEÇÃO CENTRAL (OU ENTRE COM)*/
 .divisortext {
     width: 100%;
     text-align: center; 
@@ -171,9 +159,7 @@ button:active {
     display: block;
 }
 
-/* ==========================================
-   7. BOTÕES DE LOGIN SOCIAL (GOOGLE E GITHUB)
-   ========================================== */
+/*BOTÕES DE LOGIN SOCIAL (GOOGLE E GITHUB)*/
 .social-login {
     display: flex;
     justify-content: center;
@@ -203,7 +189,7 @@ button:active {
     height: 24px !important;  
     object-fit: contain;      
     display: block;
-    /* DICA: se quiser os logotipos coloridos originais, comente a linha abaixo adicionando /* antes */
+
     filter: brightness(0) invert(1); 
 }
 
@@ -214,9 +200,7 @@ button:active {
     border-color: #00ff66; 
 }
 
-/* ==========================================
-   8. LINK INFERIOR (CADASTRE-SE)
-   ========================================== */
+/*LINK INFERIOR (CADASTRE-SE) */
 .alternar-pagina {
     text-align: center;
     font-size: 14px;
@@ -234,9 +218,7 @@ button:active {
     text-decoration: underline;
 }
 
-/* ==========================================
-   9. LINK DE ESQUECEU A SENHA
-   ========================================== */
+/*  DE ESQUECEU A SENHA */
 .esqueceu-senha-box {
     width: 100%;
     text-align: right; 

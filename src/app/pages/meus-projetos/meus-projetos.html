@@ -6,7 +6,7 @@
     <p class="projetos-subtitle">Acompanhe e gerencie o catálogo de APIs publicadas e configuradas por você no estúdio.</p>
   </header>
 
-  <!-- ESTADO VAZIO: Caso o desenvolvedor não tenha criado nenhuma API ainda -->
+  <!-- Caso o desenvolvedor não tenha criado nenhuma API ainda -->
   <div *ngIf="listaDeApis.length === 0" class="empty-state">
     <div class="empty-icon">📂</div>
     <h3>Nenhum projeto encontrado</h3>
@@ -16,10 +16,10 @@
     </button>
   </div>
 
-  <!-- GRADE DE CARDS DO MARKETPLACE (LADO A LADO) -->
+  <!-- GRADE DE CARDS DO MARKETPLACE -->
   <div class="marketplace-grid" *ngIf="listaDeApis.length > 0">
     
-    <!-- CARD INDIVIDUAL REUTILIZÁVEL (Renderiza dinamicamente cada API salva) -->
+    <!-- CARD INDIVIDUAL -->
     <div *ngFor="let api of listaDeApis" class="market-api-card">
       
       <div class="card-top-content">
@@ -42,12 +42,12 @@
         </p>
       </div>
 
-      <!-- Rodapé do Card: Informações de Preço e Ação -->
+      <!-- Informações de Preço e Ação -->
       <div class="card-footer-flex">
         <div class="card-price-display">
           Preço: <strong>R$ {{ api.planoAtivo === 'free' ? '0,00' : api.precoPlano || '0,00' }}</strong>
         </div>
-        <!-- Botão Gerenciar apontando para a nossa página de estúdio /crie -->
+        <!-- Botão Gerenciar apontando para a página de estúdio /crie -->
         <button routerLink="/crie" class="btn-manage-card">
           Gerenciar
         </button>

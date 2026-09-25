@@ -38,7 +38,7 @@ export class ExplorarComponent implements OnInit {
   }
 
   carregarMarketplace() {
-    // Lista completa com todos os 9 projetos (Os 4 originais + os 5 novos solicitados)
+    // Lista completa com todos os 9 projetos 
     const apisDeExemploPadrao: ApiProjeto[] = [
       {
         nome: 'AI Image Generator API',
