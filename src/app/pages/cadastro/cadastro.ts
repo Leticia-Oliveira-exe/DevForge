@@ -31,7 +31,7 @@ export class Cadastro {
     }
 
     // URL da sua API Node
-    const urlApi = 'http://localhost:3001/cadastro';
+    const urlApi = 'https://api-sprint7.vercel.app/';
 
     // Dispara a requisição POST para a API
     this.http.post(urlApi, this.dadosCadastro).subscribe({

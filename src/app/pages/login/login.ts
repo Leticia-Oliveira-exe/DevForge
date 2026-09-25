@@ -28,7 +28,7 @@ export class Login {
       return;
     }
 
-    const urlApi = 'http://localhost:3001/login';
+    const urlApi = 'https://api-sprint7.vercel.app/';
 
     // Dispara a requisição POST real para bater as credenciais na sua API Node
     this.http.post(urlApi, this.dadosLogin).subscribe({
