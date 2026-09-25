@@ -1,0 +1,219 @@
+
+<app-menu></app-menu>
+
+<div class="home-container">
+
+  <!-- ==========================================================================
+       1. CARROSSEL DE DESTAQUES (TOPO)
+       ========================================================================== -->
+  @if (listaCarrossel.length > 0) {
+    <section class="carrossel-banner-section">
+      <div class="carrossel-wrapper">
+        
+        <button class="carrossel-nav-btn prev" (click)="anteriorSlide()">‹</button>
+
+        <div class="slide-banner-card">
+          <div class="slide-content">
+            <span class="badge-destaque">DESTAQUE DA SEMANA</span>
+            <h2>{{ listaCarrossel[carrosselIndexAtivo].nome }}</h2>
+            <p>{{ listaCarrossel[carrosselIndexAtivo].descricao }}</p>
+            <div class="slide-meta">
+              <span class="tag-categoria">TAG: {{ listaCarrossel[carrosselIndexAtivo].categoria.toUpperCase() }}</span>
+              <button class="btn-action-banner" (click)="irParaMarketplace()">Acessar Marketplace</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="carrossel-nav-btn next" (click)="proximoSlide()">›</button>
+      </div>
+
+      <div class="carrossel-indicators">
+        @for (item of listaCarrossel; track item.nome) {
+          <span class="indicator-dot" [class.active]="$index === carrosselIndexAtivo" (click)="irParaSlide($index)"></span>
+        }
+      </div>
+    </section>
+  }
+
+  <!-- ==========================================================================
+       2. FILEIRAS DE CATÁLOGOS HORIZONTAIS INTERATIVOS (PARTE A)
+       ========================================================================== -->
+  <div class="catalogos-vertical-stack">
+
+    <!-- CATÁLOGO 1: ENVIADOS RECENTEMENTE -->
+    <section class="catalogo-row-section">
+      <h3 class="catalogo-titulo">🕒 Enviados Recentemente</h3>
+      <div class="catalogo-cards-scroll">
+        @for (api of enviadosRecently; track api.nome) {
+          <div class="mini-api-card">
+            <div class="mini-card-top">
+              <div class="mini-criador-info">
+                <img [src]="api.criadorFoto || 'https://unsplash.com'" alt="Avatar" class="mini-criador-img">
+                <button (click)="toggleSeguir(api)" class="mini-btn-seguir" [style.background-color]="api.seguindoCriador ? '#00ff66' : 'rgba(255,255,255,0.1)'" [style.color]="api.seguindoCriador ? '#000' : '#fff'">
+                  {{ api.seguindoCriador ? '🔔' : 'Seguir' }}
+                </button>
+              </div>
+              <button (click)="toggleFavoritar(api)" class="mini-btn-fav" [style.color]="api.favoritado ? '#ffcc00' : 'rgba(255,255,255,0.2)'">★</button>
+            </div>
+
+            <h4 class="mini-card-title">{{ api.nome }}</h4>
+            <p class="mini-card-desc">{{ api.descricao }}</p>
+            
+            <div class="mini-card-footer" style="display: flex; flex-direction: column; gap: 10px; width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 10px;">
+              @if (api.apiKey) {
+                <div style="background-color: rgba(0, 255, 102, 0.04); border: 1px solid rgba(0, 255, 102, 0.2); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 4px; width: 100%; box-sizing: border-box;">
+                  <span style="font-size: 9px; color: #00ff66; font-weight: 700; letter-spacing: 0.5px;">CHAVE DE ACESSO LIBERADA</span>
+                  <code style="font-family: monospace; font-size: 10px; color: rgba(255, 255, 255, 0.9); word-break: break-all;">{{ api.apiKey }}</code>
+                </div>
+              }
+              <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div class="mini-preco-box">
+                  <span class="mini-tag">TAG: {{ api.categoria }}</span>
+                  <span class="mini-preco">R$ {{ api.precoPlano || '0,00' }}/mês</span>
+                </div>
+                @if (!api.apiKey) {
+                  <button (click)="assinarEGerarKey(api)" class="mini-btn-checkout" style="background-color: #00ff66; border: none; color: #000000; padding: 6px 14px; border-radius: 12px; font-weight: 600; font-size: 0.75rem; cursor: pointer;">Assinar</button>
+                } @else {
+                  <button (click)="cancelarAssinatura(api)" style="background-color: rgba(255, 77, 77, 0.1); border: 1px solid #ff4d4d; color: #ff4d4d; padding: 6px 14px; border-radius: 12px; font-weight: 600; font-size: 0.75rem; cursor: pointer;">Cancelar</button>
+                }
+              </div>
+            </div>
+          </div>
+        } @empty {
+          <div class="texto-vazio-aba">Nenhum projeto recente disponível.</div>
+        }
+      </div>
+    </section>
+
+    <!-- CATÁLOGO 2: POPULAR -->
+    <section class="catalogo-row-section">
+      <h3 class="catalogo-titulo">🔥 Popular / Bombando</h3>
+      <div class="catalogo-cards-scroll">
+        @for (api of populares; track api.nome) {
+          <div class="mini-api-card">
+            <div class="mini-card-top">
+              <div class="mini-criador-info">
+                <img [src]="api.criadorFoto || 'https://unsplash.com'" alt="Avatar" class="mini-criador-img">
+                <button (click)="toggleSeguir(api)" class="mini-btn-seguir" [style.background-color]="api.seguindoCriador ? '#00ff66' : 'rgba(255,255,255,0.1)'" [style.color]="api.seguindoCriador ? '#000' : '#fff'">
+                  {{ api.seguindoCriador ? '🔔' : 'Seguir' }}
+                </button>
+              </div>
+              <button (click)="toggleFavoritar(api)" class="mini-btn-fav" [style.color]="api.favoritado ? '#ffcc00' : 'rgba(255,255,255,0.2)'">★</button>
+            </div>
+            <h4 class="mini-card-title">{{ api.nome }}</h4>
+            <p class="mini-card-desc">{{ api.descricao }}</p>
+            
+            <div class="mini-card-footer" style="display: flex; flex-direction: column; gap: 10px; width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 10px;">
+              @if (api.apiKey) {
+                <div style="background-color: rgba(0, 255, 102, 0.04); border: 1px solid rgba(0, 255, 102, 0.2); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 4px; width: 100%; box-sizing: border-box;">
+                  <span style="font-size: 9px; color: #00ff66; font-weight: 700; letter-spacing: 0.5px;">CHAVE DE ACESSO LIBERADA</span>
+                  <code style="font-family: monospace; font-size: 10px; color: rgba(255, 255, 255, 0.9); word-break: break-all;">{{ api.apiKey }}</code>
+                </div>
+              }
+              <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div class="mini-preco-box">
+                  <span class="mini-tag">TAG: {{ api.categoria }}</span>
+                  <span class="mini-preco">R$ {{ api.precoPlano || '0,00' }}/mês</span>
+                </div>
+                @if (!api.apiKey) {
+                  <button (click)="assinarEGerarKey(api)" class="mini-btn-checkout" style="background-color: #00ff66; border: none; color: #000000; padding: 6px 14px; border-radius: 12px; font-weight: 600; font-size: 0.75rem; cursor: pointer;">Assinar</button>
+                } @else {
+                  <button (click)="cancelarAssinatura(api)" style="background-color: rgba(255, 77, 77, 0.1); border: 1px solid #ff4d4d; color: #ff4d4d; padding: 6px 14px; border-radius: 12px; font-weight: 600; font-size: 0.75rem; cursor: pointer;">Cancelar</button>
+                }
+              </div>
+            </div>
+          </div>
+        } @empty {
+          <div class="texto-vazio-aba">Nenhuma API popular indexada.</div>
+        }
+      </div>
+    </section>
+<!-- CATÁLOGO 3: RECOMENDADO -->
+    <section class="catalogo-row-section">
+      <h3 class="catalogo-titulo">✨ Recomendado para Você</h3>
+      <div class="catalogo-cards-scroll">
+        @for (api of recomendados; track api.nome) {
+          <div class="mini-api-card">
+            <div class="mini-card-top">
+              <div class="mini-criador-info">
+                <img [src]="api.criadorFoto || 'https://unsplash.com'" alt="Avatar" class="mini-criador-img">
+                <button (click)="toggleSeguir(api)" class="mini-btn-seguir" [style.background-color]="api.seguindoCriador ? '#00ff66' : 'rgba(255,255,255,0.1)'" [style.color]="api.seguindoCriador ? '#000' : '#fff'">
+                  {{ api.seguindoCriador ? '🔔' : 'Seguir' }}
+                </button>
+              </div>
+              <button (click)="toggleFavoritar(api)" class="mini-btn-fav" [style.color]="api.favoritado ? '#ffcc00' : 'rgba(255,255,255,0.2)'">★</button>
+            </div>
+            <h4 class="mini-card-title">{{ api.nome }}</h4>
+            <p class="mini-card-desc">{{ api.descricao }}</p>
+            
+            <div class="mini-card-footer" style="display: flex; flex-direction: column; gap: 10px; width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 10px;">
+              @if (api.apiKey) {
+                <div style="background-color: rgba(0, 255, 102, 0.04); border: 1px solid rgba(0, 255, 102, 0.2); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 4px; width: 100%; box-sizing: border-box;">
+                  <span style="font-size: 9px; color: #00ff66; font-weight: 700; letter-spacing: 0.5px;">CHAVE DE ACESSO LIBERADA</span>
+                  <code style="font-family: monospace; font-size: 10px; color: rgba(255, 255, 255, 0.9); word-break: break-all;">{{ api.apiKey }}</code>
+                </div>
+              }
+              <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div class="mini-preco-box">
+                  <span class="mini-tag">TAG: {{ api.categoria }}</span>
+                  <span class="mini-preco">R$ {{ api.precoPlano || '0,00' }}/mês</span>
+                </div>
+                @if (!api.apiKey) {
+                  <button (click)="assinarEGerarKey(api)" class="mini-btn-checkout" style="background-color: #00ff66; border: none; color: #000000; padding: 6px 14px; border-radius: 12px; font-weight: 600; font-size: 0.75rem; cursor: pointer;">Assinar</button>
+                } @else {
+                  <button (click)="cancelarAssinatura(api)" style="background-color: rgba(255, 77, 77, 0.1); border: 1px solid #ff4d4d; color: #ff4d4d; padding: 6px 14px; border-radius: 12px; font-weight: 600; font-size: 0.75rem; cursor: pointer;">Cancelar</button>
+                }
+              </div>
+            </div>
+          </div>
+        } @empty {
+          <div class="texto-vazio-aba">Buscando novas recomendações...</div>
+        }
+      </div>
+    </section>
+
+    <!-- CATÁLOGO 4: GEMA RARA -->
+    <section class="catalogo-row-section">
+      <h3 class="catalogo-titulo">💎 Gema Rara <small>(Novos Desenvolvedores)</small></h3>
+      <div class="catalogo-cards-scroll">
+        @for (api of gemasRaras; track api.nome) {
+          <div class="mini-api-card">
+            <div class="mini-card-top">
+              <div class="mini-criador-info">
+                <img [src]="api.criadorFoto || 'https://unsplash.com'" alt="Avatar" class="mini-criador-img">
+                <button (click)="toggleSeguir(api)" class="mini-btn-seguir" [style.background-color]="api.seguindoCriador ? '#00ff66' : 'rgba(255,255,255,0.1)'" [style.color]="api.seguindoCriador ? '#000' : '#fff'">
+                  {{ api.seguindoCriador ? '🔔' : 'Seguir' }}
+                </button>
+              </div>
+              <button (click)="toggleFavoritar(api)" class="mini-btn-fav" [style.color]="api.favoritado ? '#ffcc00' : 'rgba(255,255,255,0.2)'">★</button>
+            </div>
+            <h4 class="mini-card-title">{{ api.nome }}</h4>
+            <p class="mini-card-desc">{{ api.descricao }}</p>
+            <div class="mini-card-footer" style="display: flex; flex-direction: column; gap: 10px; width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 10px;">
+              @if (api.apiKey) {
+                <div style="background-color: rgba(0, 255, 102, 0.04); border: 1px solid rgba(0, 255, 102, 0.2); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 4px; width: 100%; box-sizing: border-box;">
+                  <span style="font-size: 9px; color: #00ff66; font-weight: 700; letter-spacing: 0.5px;">CHAVE DE ACESSO LIBERADA</span>
+                  <code style="font-family: monospace; font-size: 10px; color: rgba(255, 255, 255, 0.9); word-break: break-all;">{{ api.apiKey }}</code>
+                </div>
+              }
+              <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div class="mini-preco-box">
+                  <span class="mini-tag">TAG: {{ api.categoria }}</span>
+                  <span class="mini-preco">R$ {{ api.precoPlano || '0,00' }}/mês</span>
+                </div>
+                @if (!api.apiKey) {
+                  <button (click)="assinarEGerarKey(api)" class="mini-btn-checkout" style="background-color: #00ff66; border: none; color: #000000; padding: 6px 14px; border-radius: 12px; font-weight: 600; font-size: 0.75rem; cursor: pointer;">Assinar</button>
+                } @else {
+                  <button (click)="cancelarAssinatura(api)" style="background-color: rgba(255, 77, 77, 0.1); border: 1px solid #ff4d4d; color: #ff4d4d; padding: 6px 14px; border-radius: 12px; font-weight: 600; font-size: 0.75rem; cursor: pointer;">Cancelar</button>
+                }
+              </div>
+            </div>
+          </div>
+        } @empty {
+          <div class="texto-vazio-aba">Nenhuma gema rara identificada esta semana.</div>
+        }
+      </div>
+    </section>
+
+  </div> <!-- Fechamento da div catalogos-vertical-stack -->
+</div> <!-- Fechamento da div home-container -->

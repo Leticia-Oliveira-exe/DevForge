@@ -1,0 +1,56 @@
+<!-- Menu Superior com Barra de Pesquisa -->
+<header>
+  <nav class="nav-bar">
+    
+    <!-- Lado Esquerdo: Home, Explorar, Stores... (Preservado e visível apenas no PC) -->
+    <div class="nav-group-left">
+      <ul class="nav-list">
+        <li class="btn-home"><a href="#home">Home</a></li>
+        <li><a href="../explorar">Explorar <span class="seta-down">▼</span></a></li>
+        <li><a href="#stores">assinatura<span class="seta-down">▼</span></a></li>
+        <li><a href="../crie">Criar</a></li>
+        <li><a href="#blog">Blog</a></li>
+      </ul>  
+    </div>
+
+    <!-- Barra de Pesquisa Centralizada (Preservada) -->
+    <div class="search-container">
+      <form action="#pesquisa" method="GET" class="search-form">
+        <input type="text" placeholder="Pesquisar APIs, lojas..." class="search-input">
+        <button type="submit" class="search-btn">
+          <span class="search-icon">🔍</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Lado Direito: Menu Sanduíche e Listagem Completa Mobile -->
+    <div class="nav-group-right">
+      <button class="menu-toggle-btn" onclick="this.classList.toggle('active'); document.querySelector('.nav-list-right').classList.toggle('show')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- 🔥 ATUALIZADO: Agora todas as opções do site aparecem aqui dentro quando o menu é aberto no celular -->
+      <ul class="nav-list nav-list-right">
+        <!-- Links que vieram do lado esquerdo (Visíveis apenas no celular/janela pequena) -->
+        <li class="link-somente-mobile"><a href="../explorar">Explorar</a></li>
+        <li class="link-somente-mobile"><a href="#stores">Assinatura</a></li>
+        <li class="link-somente-mobile"><a href="../crie">Criar</a></li>
+        <li class="link-somente-mobile"><a href="#blog">Blog</a></li>
+        
+        <!-- Linha divisória visual sutil entre os menus -->
+        <li class="link-somente-mobile" style="border-top: 1px solid rgba(0, 255, 102, 0.15); margin: 5px 0; width: 100%;"></li>
+
+        <!-- Links originais do lado direito -->
+        <li><a href="#ajuda">ajuda</a></li>
+        <li><a href="#about">sobre</a></li>
+        
+        <li class="user-menu-item">
+          <app-usuario></app-usuario>
+        </li>
+      </ul>
+    </div>
+    
+  </nav>
+</header>

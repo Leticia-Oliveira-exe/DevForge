@@ -1,0 +1,257 @@
+/* ==========================================
+   1. REGULAGEM DO ESCALA E POSICIONAMENTO (ANGULAR STYLE)
+   ========================================== */
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Faz o card ocupar o centro da tela, descontando a altura do menu superior */
+    min-height: calc(100vh - var(--altura-menu, 70px)); 
+    width: 100%;
+}
+
+/* ==========================================
+   2. DESIGN DO CARD BRANCO -> CONVERTIDO PARA VIDRO ESCURO
+   ========================================== */
+.login-wrapper {
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo preto translúcido */
+    backdrop-filter: blur(10px);          /* Efeito de desfoque de vidro fosco */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 102, 0.2); /* Borda fina verde neon sutil */
+    padding: 40px 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 
+                0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-titulo {
+    text-align: center;
+    font-size: 24px;
+    color: #00ff66; /* Mudado para o verde neon do seu menu */
+    margin-bottom: 24px; /* Espaço entre o título e o primeiro input */
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ==========================================
+   3. ESTILO DOS CAMPOS (INPUTS) E BOTÃO
+   ========================================== */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro integrado */
+    color: #ffffff; /* Texto digitado branco */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+input:focus {
+    border-color: #00ff66; /* Borda verde neon ao clicar */
+    box-shadow: 0 0 8px rgba(0, 255, 102, 0.3);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #00ff66;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.1s;
+}
+
+button:hover {
+    filter: brightness(0.85); 
+}
+
+button:active {
+    transform: scale(0.98); 
+}
+
+/* ==========================================
+   4. ESTILO DA CAIXA DE TERMOS E LINK
+   ========================================== */
+.termos-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 6px 0;
+}
+
+.termos-texto {
+    font-size: 13px;
+    color: #ccc; 
+}
+
+.termos-texto a {
+    color: #00ff66; 
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.termos-texto a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   5. DESIGN INTEGRAL DO BOTÃO SWITCH
+   ========================================== */
+.switch-container {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.switch-container input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #444; 
+    transition: 0.3s;
+    border-radius: 22px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.switch-container input:checked + .slider {
+    background-color: #00ff66; 
+}
+
+.switch-container input:checked + .slider:before {
+    transform: translateX(18px);
+}
+
+/* ==========================================
+   6. SEÇÃO CENTRAL (OU ENTRE COM)
+   ========================================== */
+.divisortext {
+    width: 100%;
+    text-align: center; 
+    font-size: 13px;
+    color: #aaa; 
+    margin: 8px 0;
+    display: block;
+}
+
+/* ==========================================
+   7. BOTÕES DE LOGIN SOCIAL (GOOGLE E GITHUB)
+   ========================================== */
+.social-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;       
+    margin: 4px 0 12px 0;  
+    width: 100%;     
+}
+
+.social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;              
+    height: 48px;             
+    background-color: rgba(255, 255, 255, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 50%;      
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;           
+}
+
+.social-btn img {
+    width: 24px !important;   
+    height: 24px !important;  
+    object-fit: contain;      
+    display: block;
+    /* DICA: se quiser os logotipos coloridos originais, comente a linha abaixo adicionando /* antes */
+    filter: brightness(0) invert(1); 
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 255, 102, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #00ff66; 
+}
+
+/* ==========================================
+   8. LINK INFERIOR (CADASTRE-SE)
+   ========================================== */
+.alternar-pagina {
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+    margin-top: 8px;
+}
+
+.alternar-pagina a {
+    color: #00ff66; 
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.alternar-pagina a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   9. LINK DE ESQUECEU A SENHA
+   ========================================== */
+.esqueceu-senha-box {
+    width: 100%;
+    text-align: right; 
+    margin-top: -4px;   
+    margin-bottom: 4px;
+    display: block;
+}
+
+.esqueceu-senha-link {
+    font-size: 13px;
+    color: #00ff66; 
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.esqueceu-senha-link:hover {
+    text-decoration: underline;
+}

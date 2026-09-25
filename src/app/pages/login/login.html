@@ -1,0 +1,51 @@
+<main class="login-wrapper">
+    
+    <!-- Título principal do Card -->
+    <h2 class="card-titulo">Login</h2>
+
+    <div class="formulario">
+        <!-- Removemos o ngSubmit do form e colocamos o evento direto no botão para garantir o disparo -->
+        <form>
+            <!-- Inputs idênticos e com mapeamento correto -->
+            <input type="email" placeholder="Email" name="email" [(ngModel)]="dadosLogin.nome" required>
+            <input type="password" placeholder="Password" name="senha" [(ngModel)]="dadosLogin.senha" required>
+
+            <!-- LINHA EXCLUSIVA: Esqueceu a senha -->
+            <p class="esqueceu-senha-box">
+                <a routerLink="/recuperar" class="esqueceu-senha-link">Esqueceu a senha?</a>
+            </p>
+
+            <!-- LINHA ISOLADA: Termos de Uso com o botão Switch -->
+            <div class="termos-box">
+                <label class="switch-container">
+                    <input type="checkbox" name="termos" [(ngModel)]="dadosLogin.termos">
+                    <span class="slider"></span>
+                </label>
+                 <span class="termos-texto">
+                    Aceito os <a href="#" target="_blank">termos de uso</a>
+                </span>
+            </div>
+
+            <!-- 🔥 ALTERAÇÃO AQUI: Mudamos o tipo para button e adicionamos o (click) direto nele -->
+            <button type="button" (click)="onLogin()">Confirmar</button>
+
+            <!-- Divisória textual informativa -->
+            <p class="divisortext">ou entre com</p>
+
+            <!-- Botões de Redes Sociais -->
+            <div class="social-login">
+                <a href="https://www.google.com/intl/pt-BR/account/about/" class="social-btn google">
+                    <img src="/img/Google-logo.png" alt="Google Logo">
+                </a>
+                <a href="https://github.com/" class="social-btn github">
+                    <img src="/img/Github-Logo-Transparent.png" alt="GitHub Logo">
+                </a>
+            </div>
+
+            <!-- Link inferior para alternar de página -->
+            <p class="alternar-pagina">
+                Não tem uma conta? <a routerLink="/cadastro">Cadastre-se</a>
+            </p>
+        </form>
+    </div>
+</main>

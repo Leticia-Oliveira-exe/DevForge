@@ -1,0 +1,87 @@
+<!-- Botão do Ícone do Usuário que fica visível na Navbar -->
+<div class="user-menu-btn" (click)="toggleSidebar()">
+  <!-- CORRIGIDO: Link xmlns restaurado para renderizar o SVG perfeitamente -->
+  <svg class="user-txt-icon" xmlns="http://w3.org" viewBox="0 0 24 24" width="24" height="24" fill="#00ff66">
+    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+  </svg>
+</div>
+
+<!-- Menu Lateral (Sidebar) - Tudo deve morar dentro desta tag principal -->
+<div id="sideMenu" class="sidebar" [style.width]="isSidebarOpen ? '250px' : '0'">
+  <!-- Botão de Fechar o Menu -->
+  <a href="javascript:void(0)" class="close-btn" (click)="toggleSidebar()">&times;</a>
+  
+  <!-- Área do Perfil (Upload da Foto + Nome) -->
+  <div class="perfil-container" [style.opacity]="isSidebarOpen ? '1' : '0'" style="transition: opacity 0.2s ease;">
+    <label class="foto-perfil-wrapper">
+      <input type="file" (change)="onFotoSelecionada($event)" accept="image/*" style="display: none;">
+      @if (fotoPerfil) {
+        <img [src]="fotoPerfil" alt="Foto de Perfil" class="foto-usuario-img">
+      } @else {
+        <div class="avatar-padrao">👤</div>
+      }
+      <span class="hover-texto">Alterar</span>
+    </label>
+    <h3 class="username-display">{{ nomeUsuario }}</h3>
+  </div>
+
+  <!-- Links e Gatilhos de Abas do Menu -->
+  <div class="sidebar-links">
+    <!-- 🔥 ALTERADO: Emojis coloridos substituídos por símbolos minimalistas que combinam com seu tema -->
+    <a (click)="mudarAbaMenu('projetos')" [class.active]="abaMenuAtiva === 'projetos'" style="cursor: pointer;"><span class="bullet-icon">▪</span> Seus Projetos</a>
+    <a (click)="mudarAbaMenu('favoritos')" [class.active]="abaMenuAtiva === 'favoritos'" style="cursor: pointer;"><span class="bullet-icon">★</span> Favoritos</a>
+    <a (click)="mudarAbaMenu('seguindo')"  [class.active]="abaMenuAtiva === 'seguindo'"  style="cursor: pointer;"><span class="bullet-icon">✦</span> Seguindo</a>
+    
+    <!-- SUB-PAINEIS DINÂMICOS DA SIDEBAR -->
+    <div class="painel-interno-abas" [style.opacity]="isSidebarOpen ? '1' : '0'" style="transition: opacity 0.3s ease; margin-top: 15px; padding: 0 20px; box-sizing: border-box; width: 250px;">
+      
+      <!-- 🌟 LISTA SEUS PROJETOS -->
+      @if (abaMenuAtiva === 'projetos') {
+        <div class="sub-lista-container">
+          @for (api of listaDeApis; track api.nome) {
+            <!-- 🔥 ALTERADO: Ícone interno minimalista -->
+            <div class="card-mini-item" style="background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 12px; border-radius: 6px; margin-bottom: 6px; color: #fff; font-size: 0.88rem;">
+              ⚡ {{ api.nome }}
+            </div>
+          } @empty {
+            <div class="texto-vazio-aba" style="color: #8892b0; font-size: 0.85rem; text-align: center; padding: 15px 0;">Nenhum projeto próprio criado.</div>
+          }
+        </div>
+      }
+
+      <!-- 🌟 LISTA SEUS FAVORITOS -->
+      @if (abaMenuAtiva === 'favoritos') {
+        <div class="sub-lista-container">
+          @for (api of apisFavoritadas; track api.nome) {
+            <!-- 🔥 ALTERADO: Removido a estrela colorida de dentro do card -->
+            <div class="card-mini-item flex-item" style="display: flex; justify-content: space-between; align-items: center; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 255, 102, 0.2); padding: 8px 12px; border-radius: 6px; margin-bottom: 6px;">
+              <span style="color: #fff; font-size: 0.88rem;">{{ api.nome }}</span>
+              <small class="tag-verde-mini" style="color: #00ff66; font-size: 10px; font-weight: bold; text-transform: uppercase;">{{ api.categoria }}</small>
+            </div>
+          } @empty {
+            <div class="texto-vazio-aba" style="color: #8892b0; font-size: 0.85rem; text-align: center; padding: 15px 0;">Nenhuma API favoritada no marketplace.</div>
+          }
+        </div>
+      }
+
+      <!-- 🌟 LISTA SEGUINDO -->
+      @if (abaMenuAtiva === 'seguindo') {
+        <div class="sub-lista-container">
+          @for (criador of criadoresSeguindo; track criador.nome) {
+            <div class="card-mini-item flex-perfil" style="display: flex; align-items: center; gap: 10px; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 12px; border-radius: 6px; margin-bottom: 6px;">
+              <img [src]="criador.foto" alt="Avatar" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1px solid #00ff66;">
+              <span style="color: #fff; font-size: 0.88rem;">{{ criador.nome }}</span>
+            </div>
+          } @empty {
+            <div class="texto-vazio-aba" style="color: #8892b0; font-size: 0.85rem; text-align: center; padding: 15px 0;">Você não está seguindo nenhum desenvolvedor.</div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- 🔥 FIXADO: O botão sair e o divisor agora estão dentro da barra lateral antes do fechamento principal -->
+    <hr class="menu-divider" style="border: 0; border-top: 1px solid rgba(45, 212, 191, 0.15); margin: 20px 24px;">
+    <a (click)="$event.stopPropagation(); onSair()" class="logout-link" style="cursor: pointer; text-decoration: none; font-size: 14px; font-weight: 500; display: flex; align-items: center; padding: 12px 24px; font-family: system-ui, sans-serif; color: #ff4d4d;">Sair</a>
+  </div>
+
+</div> <!-- 👈 Esse é o fechamento real da div class="sidebar". Nada pode ficar abaixo dele! -->

@@ -1,0 +1,75 @@
+/* Container de navegação superior */
+.header-navigation-area {
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+/* O Botão principal no estilo vidro escuro com neon */
+.btn-voltar-home {
+  background-color: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 255, 102, 0.2); /* Borda verde neon discreta */
+  color: #8892b0; /* Começa com o cinza elegante do seu tema */
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Transição individual da setinha */
+.seta-voltar {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+/* Efeito Hover: Quando o mouse passa por cima do botão */
+.btn-voltar-home:hover {
+  color: #00ff66; /* Texto acende em verde neon */
+  border-color: #00ff66; /* Borda acende por completo */
+  background-color: rgba(0, 255, 102, 0.05); /* Fundo ganha tom esverdeado sutil */
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.3), 
+              0 4px 12px rgba(0, 0, 0, 0.5); /* Efeito de brilho neon externo */
+}
+
+/* Animação da setinha dando um "empurrãozinho" para a esquerda no hover */
+.btn-voltar-home:hover .seta-voltar {
+  transform: translateX(-4px);
+}
+
+/* Efeito de clique (Active) */
+.btn-voltar-home:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE DO EXPLORAR / MARKETPLACE
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Altera a grade para se empilhar perfeitamente em uma única coluna */
+  .explorar-marketplace-container > div[style*="display: grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  header h2 {
+    font-size: 1.8rem !important;
+  }
+
+  /* Ajusta o espaçamento do botão de voltar para a home */
+  .header-navigation-area {
+    margin-bottom: 15px;
+  }
+  
+  .btn-voltar-home {
+    width: 100%;
+    justify-content: center;
+  }
+}

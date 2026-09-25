@@ -1,0 +1,23 @@
+/* --- CONFIGURAÇÕES GERAIS DO PROJETO (GLOBAL) --- */
+:root {
+  --cor-fundo-header: #000000; /* Fundo totalmente preto */
+  --cor-fundo-home: #00ff66;   /* Verde vivo para o botão Home */
+  --cor-texto: #00ff66;         /* Letras verdes */
+  --cor-texto-hover: #ffffff;  /* As letras mudam para branco ao passar o mouse */
+  --altura-menu: 70px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding-top: var(--altura-menu);
+  /* Azul fosco profundo, excelente para contrastar com o menu preto e verde */
+  background-color: #141b29 !important; 
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}

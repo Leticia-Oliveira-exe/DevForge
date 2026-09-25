@@ -1,0 +1,349 @@
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 40px 20px; /* Padding extra no topo para o menu fixo não cobrir o carrossel */
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO DO CARROSSEL SUPERIOR
+   ========================================================================== */
+.carrossel-banner-section {
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.carrossel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.slide-banner-card {
+  flex: 1;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 255, 102, 0.2); /* Borda verde neon do seu tema */
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 255, 102, 0.05);
+}
+
+.badge-destaque {
+  font-size: 11px;
+  color: #00ff66;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.slide-content h2 {
+  font-size: 2rem;
+  margin: 0 0 14px 0;
+  font-weight: 700;
+}
+
+.slide-content p {
+  color: #94a3b8;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 25px 0;
+  max-width: 800px;
+}
+
+.slide-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag-categoria {
+  font-size: 11px;
+  font-weight: bold;
+  color: #00ff66;
+  background: rgba(0, 255, 102, 0.08);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.btn-action-banner {
+  background-color: #00ff66;
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-action-banner:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.5);
+}
+
+.carrossel-nav-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 2rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  line-height: 1;
+}
+
+.carrossel-nav-btn:hover {
+  border-color: #00ff66;
+  color: #00ff66;
+  background: rgba(0, 255, 102, 0.05);
+}
+
+.carrossel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.indicator-dot.active {
+  background-color: #00ff66;
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO DOS CATÁLOGOS HORIZONTAIS
+   ========================================================================== */
+.catalogos-vertical-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.catalogo-titulo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  letter-spacing: 0.5px;
+}
+
+.catalogo-titulo small {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* Cria a fileira horizontal deslizante estilo Netflix */
+.catalogo-cards-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 102, 0.2) rgba(0, 0, 0, 0.2);
+}
+
+/* Customização da scrollbar horizontal */
+.catalogo-cards-scroll::-webkit-scrollbar {
+  height: 5px;
+}
+.catalogo-cards-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+.catalogo-cards-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 102, 0.2);
+  border-radius: 10px;
+}
+
+/* Card compacto da Home */
+.mini-api-card {
+  min-width: 270px;
+  max-width: 270px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mini-api-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 255, 102, 0.2);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.mini-api-card h4 {
+  font-size: 1rem;
+  margin: 0 0 8px 0;
+  color: #fff;
+  font-weight: 600;
+}
+
+.mini-api-card p {
+  color: #8492a6;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin: 0 0 15px 0;
+  height: 54px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.mini-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 10px;
+}
+
+.mini-tag {
+  font-size: 10px;
+  color: #00ff66;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.mini-preco {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+/* Layout do topo interno do mini card */
+.mini-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.mini-criador-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mini-criador-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #00ff66;
+}
+
+.mini-btn-seguir {
+  border: none;
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mini-btn-fav {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Título e descrição ajustados dentro do novo escopo */
+.mini-card-title {
+  margin: 0 0 6px 0 !important;
+}
+
+.mini-preco-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mini-preco {
+  font-size: 11px !important;
+  color: #8892b0;
+}
+
+/* Botão assinar em tamanho reduzido para a fileira horizontal */
+.mini-btn-checkout {
+  border: none;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE DA HOME (CELULARES E TABLETS)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 80px 15px 20px 15px; /* Reduz espaçamento do topo */
+  }
+
+  /* Faz o carrossel se ajustar ao tamanho do celular */
+  .slide-banner-card {
+    padding: 20px;
+  }
+
+  .slide-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .slide-content p {
+    font-size: 0.88rem;
+    margin-bottom: 15px;
+  }
+
+  .slide-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .btn-action-banner {
+    width: 100%;
+    text-align: center;
+  }
+
+  .carrossel-nav-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+  }
+
+  /* Deixa os mini cards com rolagem horizontal mais confortáveis */
+  .mini-api-card {
+    min-width: 240px;
+    max-width: 240px;
+    padding: 15px;
+  }
+}

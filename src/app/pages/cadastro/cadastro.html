@@ -1,0 +1,27 @@
+<main class="login-wrapper">
+    <!-- Título focado no primeiro acesso -->
+    <h2 class="card-titulo">Cadastro</h2>
+
+    <div class="formulario">
+        <!-- 1. Adicionado o (ngSubmit) para chamar a função que criamos no TypeScript -->
+        <form (ngSubmit)="onCadastrar()">
+            
+            <!-- 2. Adicionado o [(ngModel)] e o 'name' em cada um dos inputs -->
+            <input type="text" placeholder="Nome de Usuário" name="nome" [(ngModel)]="dadosCadastro.nome" required>
+
+            <input type="email" placeholder="Email" name="email" [(ngModel)]="dadosCadastro.email" required>
+            
+            <input type="password" placeholder="Crie uma senha" name="senha" [(ngModel)]="dadosCadastro.senha" required>
+            
+            <input type="password" placeholder="Confirme a senha" name="confirmaSenha" [(ngModel)]="dadosCadastro.confirmaSenha" required>
+
+            <!-- Botão principal -->
+            <button type="submit">Cadastrar</button>
+
+            <!-- Link inferior para retornar à tela de login -->
+            <p class="alternar-pagina">
+                Já tem uma conta? <a routerLink="/login">Faça Login</a>
+            </p>
+        </form>
+    </div>
+</main>

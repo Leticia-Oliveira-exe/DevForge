@@ -1,0 +1,478 @@
+:host {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #0b1317;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.studio-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- BARRA LATERAL (SIDEBAR) --- */
+.sidebar {
+  width: 260px;
+  background-color: #121e24;
+  border-right: 1px solid #1c323d;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Botão Voltar ao Início */
+.btn-voltar {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 14px;
+  padding: 10px 20px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+  margin-bottom: 10px;
+}
+
+.btn-voltar:hover {
+  color: #2dd4bf;
+}
+
+/* Botão "+ Nova API" */
+.btn-sidebar-add {
+  margin: 10px 20px 20px 20px;
+  background-color: #2dd4bf;
+  color: #0f172a;
+  border: none;
+  border-radius: 20px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-sidebar-add:hover {
+  background-color: #14b8a6;
+  transform: translateY(-1px);
+}
+
+/* Lista do Menu Lateral */
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #8892b0;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+/* Configuração estável dos ícones SVG dentro dos menus */
+.icon-menu-api {
+  width: 18px;
+  height: 18px;
+  color: #8892b0;
+  transition: color 0.2s ease;
+}
+
+/* Comportamento de Hover e Estado Ativo Global do Menu */
+.menu-item:hover {
+  color: #00ff66;
+  background-color: rgba(0, 255, 102, 0.05);
+}
+
+.menu-item.active {
+  background-color: rgba(45, 212, 191, 0.1);
+  color: #2dd4bf;
+  font-weight: 500;
+}
+
+/* Acendimento específico para os ícones baseados no estado do pai */
+.menu-item.active .icon-menu-api {
+  color: #2dd4bf !important;
+}
+
+.menu-item:hover .icon-menu-api {
+  color: #00ff66 !important;
+}
+
+/* --- LISTAGEM DINÂMICA DA SUB-LISTA --- */
+.sub-lista-apis {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  padding-left: 12px;
+  border-left: 1px solid #1c323d;
+  margin-left: 16px;
+}
+
+.api-item-link {
+  background: none;
+  border: none;
+  color: #64748b;
+  text-align: left;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s;
+}
+
+.api-item-link:hover {
+  color: #ffffff;
+  background-color: #1c2d37;
+}
+
+.api-item-link.selecionado {
+  color: #2dd4bf;
+  font-weight: 500;
+  background-color: rgba(45, 212, 191, 0.05);
+}
+
+/* --- ÁREA DE CONTEÚDO PRINCIPAL (DIREITA) --- */
+.main-content {
+  flex: 1;
+  padding: 40px;
+  background-color: #0b1317;
+}
+
+.content-card {
+  max-width: 600px;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+/* Estrutura de Formulários */
+.painel-edicao {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+input[type="text"], textarea, select {
+  background-color: #121e24;
+  border: 1px solid #1c323d;
+  border-radius: 20px;
+  padding: 10px 16px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #2dd4bf;
+}
+
+/* --- SEÇÃO DE UPLOAD DE LOGO --- */
+.upload-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #121e24;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #1c323d;
+  margin-top: 4px;
+}
+
+.avatar-preview {
+  width: 60px;
+  height: 60px;
+  background-color: #0b1317;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  overflow: hidden;
+  border: 1px solid #1c323d;
+}
+
+.upload-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.btn-upload-file {
+  background-color: #1c2d37;
+  border: 1px solid #334155;
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  width: fit-content;
+  transition: all 0.2s;
+}
+
+.btn-upload-file:hover {
+  background-color: #243b48;
+  border-color: #2dd4bf;
+}
+
+.upload-hint {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* --- BOTÃO SALVAR ALTERAÇÕES --- */
+.form-actions-salvar {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 24px;
+}
+
+.btn-salvar-alteracoes {
+  background-color: transparent;
+  border: 1px solid #2dd4bf;
+  color: #2dd4bf;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-salvar-alteracoes:hover {
+  background-color: #2dd4bf;
+  color: #0f172a;
+}
+
+/* --- MODAL FLUTUANTE --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 15, 20, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.rapid-card {
+  background-color: #121e24;
+  border: 1px solid #1c323d;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.btn-fechar {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.btn-fechar:hover { 
+  color: #2dd4bf; 
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+button.btn-cancel, button.btn-submit {
+  padding: 10px 24px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  border: 1px solid #334155;
+  color: #94a3b8;
+}
+
+.btn-cancel:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.btn-submit {
+  background-color: #2dd4bf;
+  border: none;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.btn-submit:hover {
+  background-color: #14b8a6;
+}
+
+/* Fallback do Angular para quando não houver item ativo */
+.empty-state-container {
+  display: flex;
+  height: 50vh;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 15px;
+  text-align: center;
+}
+
+
+.btn-excluir-projeto:hover {
+  background-color: #ff4d4d !important;
+  color: #0f172a !important;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE DO ESTÚDIO DE CRIAÇÃO (CELULARES E TABLETS)
+   ========================================================================== */
+@media (max-width: 900px) {
+  /* Transforma o layout de duas colunas em uma coluna empilhada verticalmente */
+  .studio-container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    padding: 20px 15px;
+  }
+
+  /* Ajusta a barra lateral para ocupar o topo com largura total */
+  .sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 255, 102, 0.15);
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+  }
+
+  /* Faz o menu lateral de opções se alinhar lado a lado com rolagem horizontal suave */
+  .sidebar-menu {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .menu-item {
+    min-width: 130px;
+    justify-content: center;
+    margin-bottom: 0;
+    padding: 12px;
+  }
+
+  /* Ajusta a sub-lista de APIs criadas para rolar horizontalmente também */
+  .sub-lista-apis {
+    display: flex;
+    gap: 10px;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .api-item-link {
+    white-space: nowrap;
+    margin-bottom: 0;
+  }
+
+  /* Ajusta a área de conteúdo da direita para preencher o celular sem esmagar */
+  .main-content {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Alinha os botões de voltar e adicionar verticalmente no celular */
+  .sidebar-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .btn-voltar, 
+  .btn-sidebar-add {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Faz as ações de salvar e excluir ocuparem largura total empilhadas */
+  .form-actions-salvar {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px !important;
+  }
+
+  .btn-salvar-alteracoes,
+  .form-actions-salvar button {
+    width: 100% !important;
+    text-align: center;
+  }
+
+  /* Centraliza e ajusta o tamanho do card do modal de criação */
+  .rapid-card {
+    width: 92%;
+    padding: 20px;
+    margin: 10px auto;
+  }
+}

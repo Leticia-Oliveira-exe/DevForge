@@ -1,0 +1,184 @@
+.projetos-container {
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Espaço de 110px no topo para não ficar por baixo da Navbar superior */
+  padding: 110px 40px 40px 40px; 
+  background-color: #0b1317;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.projetos-header {
+  margin-bottom: 35px;
+}
+
+.projetos-container h2 {
+  font-size: 26px;
+  margin: 0 0 6px 0;
+  color: #ffffff;
+  font-family: system-ui, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.projetos-subtitle {
+  color: #94a3b8;
+  margin: 0;
+  font-size: 14px;
+  font-family: system-ui, sans-serif;
+}
+
+/* ==========================================================================
+   ESTRUTURA DO GRID EM COLUNAS PARALELAS
+   ========================================================================== */
+.marketplace-grid {
+  display: grid;
+  /* Distribui os cards lado a lado automaticamente dependendo do tamanho da tela */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  gap: 24px;
+  width: 100%;
+}
+
+.market-api-card {
+  background-color: #121e24; /* Fundo cinza escuro igual ao restante do projeto */
+  border: 1px solid #1c323d;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 190px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.market-api-card:hover {
+  transform: translateY(-2px);
+  border-color: #2dd4bf; /* Borda acende em verde-água no foco */
+}
+
+.card-header-flex {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.card-logo-box {
+  width: 45px;
+  height: 45px;
+  background-color: #0b1317;
+  border-radius: 8px;
+  border: 1px solid #1c323d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card-logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-logo-box span {
+  font-size: 18px;
+}
+
+.card-title-group h3 {
+  font-size: 15px;
+  margin: 0;
+  color: #ffffff;
+  font-weight: 600;
+  font-family: system-ui, sans-serif;
+}
+
+.author-tag {
+  font-size: 11px;
+  color: #2dd4bf;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.card-description-text {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.4;
+  margin: 0 0 15px 0;
+  font-family: system-ui, sans-serif;
+}
+
+/* Rodapé do Card */
+.card-footer-flex {
+  border-top: 1px solid #1c323d;
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.card-price-display {
+  font-size: 12px;
+  color: #64748b;
+  font-family: system-ui, sans-serif;
+}
+
+.card-price-display strong {
+  color: #ffffff;
+}
+
+.btn-manage-card {
+  background-color: #1c2d37;
+  border: 1px solid #334155;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: system-ui, sans-serif;
+  transition: all 0.2s ease;
+}
+
+.btn-manage-card:hover {
+  background-color: #243b48;
+  border-color: #2dd4bf;
+  color: #2dd4bf;
+}
+
+/* Estado de tela vazia */
+.empty-state {
+  text-align: center;
+  color: #64748b;
+  padding: 60px 0;
+  font-family: system-ui, sans-serif;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.empty-state h3 {
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.btn-create-now {
+  margin-top: 15px;
+  background-color: #2dd4bf;
+  color: #0f172a;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-create-now:hover {
+  background-color: #14b8a6;
+}

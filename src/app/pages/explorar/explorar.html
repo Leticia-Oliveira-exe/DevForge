@@ -1,0 +1,92 @@
+<div class="explorar-marketplace-container" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px; font-family: system-ui, sans-serif; color: #ffffff; position: relative;">
+  
+<!-- Botão Voltar para a Home Estilizado -->
+   <div class="header-navigation-area">
+        <button class="btn-voltar-home" (click)="voltarParaHome()">
+            <span class="seta-voltar">←</span> 
+            <span class="texto-voltar">Voltar ao Início</span>
+        </button>
+    </div>
+  <!-- CABEÇALHO DO HUB -->
+  <header style="margin-bottom: 45px; text-align: center;">
+    <h2 style="font-size: 2.2rem; font-weight: 700; margin: 0 0 10px 0; color: #00ff66; letter-spacing: 0.5px;">Hub de APIs Públicas</h2>
+    <p style="color: #8892b0; margin: 0; font-size: 1rem; max-width: 600px; margin: 0 auto;">
+      Explore, teste e assine licenças comerciais das APIs criadas por nossa comunidade de desenvolvedores.
+    </p>
+  </header>
+
+  <!-- GRADE DE CARDS DO HUB -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 25px;">
+    
+    @for (api of listaDeApis; track api.nome) {
+      <div style="background-color: rgba(255, 255, 255, 0.03); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); position: relative;">
+        
+        <div>
+          <!-- PERFIL DO CRIADOR DA API (Foto + Nome + Seguir) -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <img [src]="api.criadorFoto" alt="Criador" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid #00ff66;">
+              <span style="font-size: 0.88rem; color: #fff; font-weight: 500;">{{ api.criadorNome }}</span>
+            </div>
+            
+            <button (click)="toggleSeguir(api)" 
+              style="border: none; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s;"
+              [style.background-color]="api.seguindoCriador ? '#00ff66' : 'rgba(255,255,255,0.1)'"
+              [style.color]="api.seguindoCriador ? '#000' : '#fff'">
+              {{ api.seguindoCriador ? 'Seguindo 🔔' : 'Seguir' }}
+            </button>
+          </div>
+
+          <!-- Identificação e Título da API -->
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px;">
+            <div>
+              <h3 style="color: #ffffff; margin: 0 0 4px 0; font-size: 1.2rem; font-weight: 600;">{{ api.nome }}</h3>
+              <span style="font-size: 10px; color: #00ff66; font-weight: 700; text-transform: uppercase; background: rgba(0,255,102,0.08); padding: 2px 8px; border-radius: 4px;">
+                TAG: {{ api.categoria }}
+              </span>
+            </div>
+
+            <!-- BOTÃO INTERATIVO FAVORITAR -->
+            <button (click)="toggleFavoritar(api)" style="background: none; border: none; cursor: pointer; font-size: 22px; padding: 0; line-height: 1; transition: transform 0.2s;" [style.color]="api.favoritado ? '#ffcc00' : 'rgba(255,255,255,0.2)'">
+              ★
+            </button>
+          </div>
+
+          <!-- Descrição da API -->
+          <p style="color: #8892b0; font-size: 0.88rem; line-height: 1.5; margin: 0 0 20px 0; height: 44px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+            {{ api.descricao || 'Nenhuma descrição fornecida para este projeto de API.' }}
+          </p>
+
+          <!-- CHAVE DE ACESSO -->
+          @if (api.apiKey) {
+            <div style="background-color: rgba(0, 255, 102, 0.04); border: 1px solid rgba(0, 255, 102, 0.2); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 4px; margin-bottom: 20px;">
+              <span style="font-size: 10px; color: #00ff66; font-weight: 700; letter-spacing: 0.5px;">CHAVE DE ACESSO LIBERADA</span>
+              <code style="font-family: monospace; font-size: 11px; color: rgba(255, 255, 255, 0.9); word-break: break-all;">{{ api.apiKey }}</code>
+            </div>
+          }
+        </div>
+
+        <!-- Rodapé do Card -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05);">
+          <div style="display: flex; flex-direction: column;">
+            <span style="font-size: 11px; color: #8892b0;">Mensalidade</span>
+            <span style="font-size: 1.1rem; font-weight: 700;">
+              R$ {{ api.precoPlano || '0,00' }}<small style="font-size: 11px; color: #8892b0;">/mês</small>
+            </span>
+          </div>
+
+          <button 
+            (click)="assinarEGerarKey(api)" 
+            style="border: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;"
+            [style.background-color]="api.apiKey ? 'rgba(0, 255, 102, 0.15)' : '#00ff66'"
+            [style.border]="api.apiKey ? '1px solid #00ff66' : 'none'"
+            [style.color]="api.apiKey ? '#00ff66' : '#000000'">
+            {{ api.apiKey ? 'Inscrito ✓' : 'Assinar API' }}
+          </button>
+        </div>
+
+      </div>
+    }
+
+  </div>
+</div>
