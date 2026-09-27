@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// 1. Adicione essa linha de importação apontando para o arquivo do usuário
 import { UsuarioComponent } from '../usuario/usuario'; 
 
 @Component({
   selector: 'app-menu', // ou o nome do seletor do seu menu
   standalone: true,
-  // 2. Coloque o UsuarioComponent aqui dentro do array de imports:
   imports: [CommonModule, UsuarioComponent], 
   templateUrl: './menu.html',
   styleUrl: './menu.css'
 })
-  // resto do código do seu menu...
+
 
 export class Menu {
 

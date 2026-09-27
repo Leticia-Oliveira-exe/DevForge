@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. ÍCONE DE TEXTO DO USUÁRIO (NAVBAR)
-   ========================================================================== */
+/*ÍCONE DE TEXTO DO USUÁRIO (NAVBAR) */
 .user-menu-btn {
   background: none;
   border: none;
@@ -22,9 +20,7 @@
   transform: scale(1.1);
 }
 
-/* ==========================================================================
-   2. ESTRUTURA DA SIDEBAR (MENU LATERAL)
-   ========================================================================== */
+/* ESTRUTURA DA SIDEBAR (MENU LATERAL) */
 .sidebar {
   height: 100vh;
   position: fixed;
@@ -42,9 +38,7 @@
   box-sizing: border-box;
 }
 
-/* ==========================================================================
-   3. ÁREA DE PERFIL ESTILIZADA (FOTO + NOME)
-   ========================================================================== */
+/* ÁREA DE PERFIL ESTILIZADA (FOTO + NOME) */
 .perfil-container {
   display: flex;
   flex-direction: column;
@@ -123,9 +117,7 @@
   letter-spacing: 0.5px;
 }
 
-/* ==========================================================================
-   4. LINKS DA SIDEBAR E ÍCONES SVG
-   ========================================================================== */
+/* LINKS DA SIDEBAR E ÍCONES SVG */
 .sidebar-links {
   display: flex;
   flex-direction: column;
@@ -208,10 +200,8 @@
   opacity: 0.3;
 }
 
-/* ==========================================================================
-   5. CONTAINER DAS ABAS E MINI CARDS (FAVORITOS / SEGUINDO)
-   ========================================================================== */
-/* 🔥 ADICIONADO: Força o painel interno a ficar visível e ocupar a largura ideal da sidebar */
+/*CONTAINER DAS ABAS E MINI CARDS (FAVORITOS / SEGUINDO)*/
+
 .painel-interno-abas {
   width: 250px;
   display: block;
@@ -268,9 +258,7 @@
   padding: 15px 24px;
 }
 
-/* ==========================================================================
-   ESTILIZAÇÃO DA SCROLLBAR ESCURA (OPÇÃO DE DESCER)
-   ========================================================================== */
+/* ESTILIZAÇÃO DA SCROLLBAR ESCURA (OPÇÃO DE DESCER) */
 
 /* Define a largura da barra de rolagem interna */
 .sub-lista-container::-webkit-scrollbar {

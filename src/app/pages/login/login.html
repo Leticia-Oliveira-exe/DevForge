@@ -1,31 +1,23 @@
-<main class="login-wrapper">
-    
-    
-    <div class="brand-container" style="text-align: center; margin-bottom: 25px;">
-        <h1 style="color: #00ff66; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; margin: 0 0 4px 0; text-transform: uppercase; text-shadow: 0 0 15px rgba(0, 255, 102, 0.3); font-family: system-ui, -apple-system, sans-serif;">
-            DevForge
-        </h1>
-        <p style="color: #8892b0; font-size: 0.9rem; margin: 0; font-family: system-ui, -apple-system, sans-serif;">
-            Hub & Marketplace de APIs Avançadas
-        </p>
+<nav class="menu-superior">
+    <div class="menu-container">
+        <div class="menu-logo">
+            <img src="img/WhatsApp Image 2026-09-27 at 17.54.06 (1).jpeg" alt="DevForge">
+        </div>
     </div>
+</nav>
 
-    <!-- Card  -->
-    <h2 class="card-titulo" style="text-align: center; display: none;">Login</h2>
+<main class="login-wrapper">
+    <h2 class="card-titulo" style="text-align: center; color: #52D669; font-size: 24px; margin-top: 15px; margin-bottom: 24px; font-weight: 700; font-family: sans-serif; letter-spacing: 1px; text-shadow: 0 0 10px rgba(82, 214, 105, 0.4);">LOGIN</h2>
 
     <div class="formulario">
-        
         <form>
-            <!-- Inputs  -->
             <input type="email" placeholder="Email" name="email" [(ngModel)]="dadosLogin.nome" required>
             <input type="password" placeholder="Password" name="senha" [(ngModel)]="dadosLogin.senha" required>
 
-            <!-- Esqueceu a senha -->
             <p class="esqueceu-senha-box">
                 <a routerLink="/recuperar" class="esqueceu-senha-link">Esqueceu a senha?</a>
             </p>
 
-            
             <div class="termos-box">
                 <label class="switch-container">
                     <input type="checkbox" name="termos" [(ngModel)]="dadosLogin.termos">
@@ -36,23 +28,19 @@
                 </span>
             </div>
 
-           
             <button type="button" (click)="onLogin()">Confirmar</button>
 
-            <!-- Divisória textual informativa -->
             <p class="divisortext">ou entre com</p>
 
-            <!-- Botões de Redes Sociais -->
             <div class="social-login">
-                <a href="https://www.google.com/intl/pt-BR/account/about/" class="social-btn google">
-                    <img src="/img/Google-logo.png" alt="Google Logo">
+                <a href="https://google.com" class="social-btn google">
+                    <img src="img/Google-logo.png" alt="Google Logo">
                 </a>
-                <a href="https://github.com/" class="social-btn github">
-                    <img src="/img/Github-Logo-Transparent.png" alt="GitHub Logo">
+                <a href="https://github.com" class="social-btn github">
+                    <img src="img/Github-Logo-Transparent.png" alt="GitHub Logo">
                 </a>
             </div>
 
-            <!-- Link inferior para alternar de página -->
             <p class="alternar-pagina">
                 Não tem uma conta? <a routerLink="/cadastro">Cadastre-se</a>
             </p>

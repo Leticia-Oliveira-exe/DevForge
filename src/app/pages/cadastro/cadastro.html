@@ -1,21 +1,21 @@
+<nav class="menu-superior">
+    <div class="menu-container">
+        <div class="menu-logo">
+            <img src="img/WhatsApp Image 2026-09-27 at 17.54.06 (1).jpeg" alt="DevForge">
+        </div>
+    </div>
+</nav>
+
 <main class="login-wrapper">
-    <!-- Título focado no primeiro acesso -->
     <h2 class="card-titulo">Cadastro</h2>
 
     <div class="formulario">
-        
         <form (ngSubmit)="onCadastrar()">
-            
-            
             <input type="text" placeholder="Nome de Usuário" name="nome" [(ngModel)]="dadosCadastro.nome" required>
-
             <input type="email" placeholder="Email" name="email" [(ngModel)]="dadosCadastro.email" required>
-            
             <input type="password" placeholder="Crie uma senha" name="senha" [(ngModel)]="dadosCadastro.senha" required>
-            
             <input type="password" placeholder="Confirme a senha" name="confirmaSenha" [(ngModel)]="dadosCadastro.confirmaSenha" required>
 
-            
             <div class="termos-box" style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
                 <label class="switch-container">
                     <input type="checkbox" name="termos" [(ngModel)]="dadosCadastro.termos">
@@ -26,10 +26,8 @@
                 </span>
             </div>
 
-            <!-- Botão principal -->
             <button type="submit">Cadastrar</button>
 
-            <!-- Link inferior para retornar à tela de login -->
             <p class="alternar-pagina">
                 Já tem uma conta? <a routerLink="/login">Faça Login</a>
             </p>

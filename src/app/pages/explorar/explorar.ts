@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Menu } from '../../componentes/menu/menu';
 
 interface ApiProjeto {
   nome: string;
@@ -20,12 +21,13 @@ interface ApiProjeto {
 @Component({
   selector: 'app-explorar',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Menu],
   templateUrl: './explorar.html',
   styleUrl: './explorar.css'
 })
 export class ExplorarComponent implements OnInit {
   listaDeApis: ApiProjeto[] = [];
+  termoPesquisa: string = '';
 
   constructor(private router: Router) {}
 
@@ -33,12 +35,22 @@ export class ExplorarComponent implements OnInit {
     this.carregarMarketplace();
   }
 
+  get apisFiltradas(): ApiProjeto[] {
+    if (!this.termoPesquisa.trim()) {
+      return this.listaDeApis;
+    }
+    return this.listaDeApis.filter(api =>
+      api.nome.toLowerCase().includes(this.termoPesquisa.toLowerCase()) ||
+      api.categoria.toLowerCase().includes(this.termoPesquisa.toLowerCase()) ||
+      api.descricao.toLowerCase().includes(this.termoPesquisa.toLowerCase())
+    );
+  }
+
   voltarParaHome() {
     this.router.navigate(['/home']);
   }
 
   carregarMarketplace() {
-    // Lista completa com todos os 9 projetos 
     const apisDeExemploPadrao: ApiProjeto[] = [
       {
         nome: 'AI Image Generator API',
@@ -149,7 +161,6 @@ export class ExplorarComponent implements OnInit {
     } else {
       const apisExistentes = JSON.parse(dadosLocais);
       
-      // Se a lista salva no navegador estiver menor do que os 9 exemplos, força a atualização
       if (apisExistentes.length < apisDeExemploPadrao.length) {
         localStorage.setItem('minhas_apis', JSON.stringify(apisDeExemploPadrao));
         this.listaDeApis = apisDeExemploPadrao;

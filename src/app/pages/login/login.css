@@ -1,19 +1,57 @@
-/* REGULAGEM DO ESCALA E POSICIONAMENTO (ANGULAR STYLE) */
 :host {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Faz o card ocupar o centro da tela, descontando a altura do menu superior */
-    min-height: calc(100vh - var(--altura-menu, 70px)); 
+    min-height: calc(100vh - var(--altura-menu, 90px)); 
     width: 100%;
 }
 
-/* ESIGN DO CARD BRANCO -> CONVERTIDO PARA VIDRO ESCURO */
+.menu-superior {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: #000000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 9999;
+    overflow: hidden; 
+}
+
+.menu-container {
+    width: 100%;
+    height: 100%;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden; 
+}
+
+.menu-logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 220px; 
+    overflow: hidden; 
+}
+
+.menu-logo img {
+    height: 145px; 
+    width: auto;
+    object-fit: contain;
+    mix-blend-mode: screen; 
+    transform: translateY(-5px);
+    margin-left: -15px; 
+    display: block;
+}
+
 .login-wrapper {
-    background-color: rgba(0, 0, 0, 0.8); /* Fundo preto translúcido */
-    backdrop-filter: blur(10px);          /* Efeito de desfoque de vidro fosco */
+    background-color: rgba(0, 0, 0, 0.8); 
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 255, 102, 0.2); /* Borda fina verde neon sutil */
+    border: 1px solid rgba(0, 255, 102, 0.2); 
     padding: 40px 30px;
     border-radius: 12px;
     width: 100%;
@@ -25,10 +63,12 @@
 .card-titulo {
     text-align: center;
     font-size: 24px;
-    color: #00ff66; 
-    margin-bottom: 24px;
-    font-weight: 600;
+    color: #52D669; 
+    margin-bottom: 24px; 
+    font-weight: 700;
+    font-family: sans-serif;
     letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(82, 214, 105, 0.4);
 }
 
 form {
@@ -37,7 +77,6 @@ form {
     gap: 16px;
 }
 
-/*ESTILO DOS CAMPOS (INPUTS) E BOTÃO*/
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -47,8 +86,8 @@ input[type="password"] {
     border-radius: 8px;
     font-size: 14px;
     outline: none;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro integrado */
-    color: #ffffff; /* Texto digitado branco */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -57,7 +96,7 @@ input::placeholder {
 }
 
 input:focus {
-    border-color: #00ff66; /* Borda verde neon ao clicar */
+    border-color: #00ff66;
     box-shadow: 0 0 8px rgba(0, 255, 102, 0.3);
 }
 
@@ -82,7 +121,6 @@ button:active {
     transform: scale(0.98); 
 }
 
-/* ESTILO DA CAIXA DE TERMOS E LINK*/
 .termos-box {
     display: flex;
     align-items: center;
@@ -96,7 +134,7 @@ button:active {
 }
 
 .termos-texto a {
-    color: #00ff66; 
+    color: #00ff66;
     text-decoration: none;
     font-weight: 600;
 }
@@ -105,7 +143,6 @@ button:active {
     text-decoration: underline;
 }
 
-/*DESIGN INTEGRAL DO BOTÃO SWITCH */
 .switch-container {
     position: relative;
     display: inline-block;
@@ -149,17 +186,15 @@ button:active {
     transform: translateX(18px);
 }
 
-/*SEÇÃO CENTRAL (OU ENTRE COM)*/
 .divisortext {
     width: 100%;
-    text-align: center; 
+    text-align: center;
     font-size: 13px;
-    color: #aaa; 
+    color: #aaa;
     margin: 8px 0;
     display: block;
 }
 
-/*BOTÕES DE LOGIN SOCIAL (GOOGLE E GITHUB)*/
 .social-login {
     display: flex;
     justify-content: center;
@@ -189,7 +224,6 @@ button:active {
     height: 24px !important;  
     object-fit: contain;      
     display: block;
-
     filter: brightness(0) invert(1); 
 }
 
@@ -197,10 +231,9 @@ button:active {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 255, 102, 0.2);
     background-color: rgba(255, 255, 255, 0.2);
-    border-color: #00ff66; 
+    border-color: #00ff66;
 }
 
-/*LINK INFERIOR (CADASTRE-SE) */
 .alternar-pagina {
     text-align: center;
     font-size: 14px;
@@ -209,7 +242,7 @@ button:active {
 }
 
 .alternar-pagina a {
-    color: #00ff66; 
+    color: #00ff66;
     text-decoration: none;
     font-weight: 600;
 }
@@ -218,7 +251,6 @@ button:active {
     text-decoration: underline;
 }
 
-/*  DE ESQUECEU A SENHA */
 .esqueceu-senha-box {
     width: 100%;
     text-align: right; 
@@ -229,7 +261,7 @@ button:active {
 
 .esqueceu-senha-link {
     font-size: 13px;
-    color: #00ff66; 
+    color: #00ff66;
     text-decoration: none;
     font-weight: 500;
 }
