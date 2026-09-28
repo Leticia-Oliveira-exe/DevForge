@@ -11,7 +11,6 @@
   min-height: 100vh;
 }
 
-/* --- BARRA LATERAL (SIDEBAR) --- */
 .sidebar {
   width: 260px;
   background-color: #121e24;
@@ -26,7 +25,6 @@
   flex-direction: column;
 }
 
-/* Botão Voltar ao Início */
 .btn-voltar {
   background: none;
   border: none;
@@ -46,7 +44,6 @@
   color: #2dd4bf;
 }
 
-/* Botão "+ Nova API" */
 .btn-sidebar-add {
   margin: 10px 20px 20px 20px;
   background-color: #2dd4bf;
@@ -65,7 +62,6 @@
   transform: translateY(-1px);
 }
 
-/* Lista do Menu Lateral */
 .sidebar-menu {
   display: flex;
   flex-direction: column;
@@ -85,7 +81,6 @@
   transition: all 0.2s ease;
 }
 
-/* Configuração estável dos ícones SVG dentro dos menus */
 .icon-menu-api {
   width: 18px;
   height: 18px;
@@ -93,7 +88,6 @@
   transition: color 0.2s ease;
 }
 
-/* Comportamento de Hover e Estado Ativo Global do Menu */
 .menu-item:hover {
   color: #00ff66;
   background-color: rgba(0, 255, 102, 0.05);
@@ -105,7 +99,6 @@
   font-weight: 500;
 }
 
-/* Acendimento específico para os ícones baseados no estado do pai */
 .menu-item.active .icon-menu-api {
   color: #2dd4bf !important;
 }
@@ -114,7 +107,6 @@
   color: #00ff66 !important;
 }
 
-/* --- LISTAGEM DINÂMICA DA SUB-LISTA --- */
 .sub-lista-apis {
   display: flex;
   flex-direction: column;
@@ -151,7 +143,6 @@
   background-color: rgba(45, 212, 191, 0.05);
 }
 
-/* --- ÁREA DE CONTEÚDO PRINCIPAL (DIREITA) --- */
 .main-content {
   flex: 1;
   padding: 40px;
@@ -172,7 +163,6 @@ h2 {
   margin-bottom: 30px;
 }
 
-/* Estrutura de Formulários */
 .painel-edicao {
   display: flex;
   flex-direction: column;
@@ -202,12 +192,15 @@ input[type="text"], textarea, select {
   box-sizing: border-box;
 }
 
+textarea {
+  resize: none;
+}
+
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: #2dd4bf;
 }
 
-/* --- SEÇÃO DE UPLOAD DE LOGO --- */
 .upload-container {
   display: flex;
   align-items: center;
@@ -264,7 +257,6 @@ input:focus, textarea:focus, select:focus {
   margin: 0;
 }
 
-/* --- BOTÃO SALVAR ALTERAÇÕES --- */
 .form-actions-salvar {
   display: flex;
   justify-content: flex-start;
@@ -288,7 +280,6 @@ input:focus, textarea:focus, select:focus {
   color: #0f172a;
 }
 
-/* --- MODAL FLUTUANTE --- */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -366,7 +357,6 @@ button.btn-cancel, button.btn-submit {
   background-color: #14b8a6;
 }
 
-/* Fallback do Angular para quando não houver item ativo */
 .empty-state-container {
   display: flex;
   height: 50vh;
@@ -377,17 +367,39 @@ button.btn-cancel, button.btn-submit {
   text-align: center;
 }
 
-
 .btn-excluir-projeto:hover {
   background-color: #ff4d4d !important;
   color: #0f172a !important;
 }
 
-/* ==========================================================================
-   RESPONSIVIDADE DO ESTÚDIO DE CRIAÇÃO (CELULARES E TABLETS)
-   ========================================================================== */
+.btn-cancelar {
+  background-color: transparent;
+  border: 1px solid #334155;
+  color: #94a3b8;
+  padding: 10px 24px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btn-cancelar:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.btn-criar-projeto {
+  background-color: #2dd4bf;
+  border: none;
+  color: #0f172a;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btn-criar-projeto:hover {
+  background-color: #14b8a6;
+}
+
 @media (max-width: 900px) {
-  /* Transforma o layout de duas colunas em uma coluna empilhada verticalmente */
   .studio-container {
     display: flex;
     flex-direction: column;
@@ -396,7 +408,6 @@ button.btn-cancel, button.btn-submit {
     padding: 20px 15px;
   }
 
-  /* Ajusta a barra lateral para ocupar o topo com largura total */
   .sidebar {
     width: 100%;
     height: auto;
@@ -406,7 +417,6 @@ button.btn-cancel, button.btn-submit {
     margin-bottom: 25px;
   }
 
-  /* Faz o menu lateral de opções se alinhar lado a lado com rolagem horizontal suave */
   .sidebar-menu {
     display: flex;
     gap: 12px;
@@ -421,7 +431,6 @@ button.btn-cancel, button.btn-submit {
     padding: 12px;
   }
 
-  /* Ajusta a sub-lista de APIs criadas para rolar horizontalmente também */
   .sub-lista-apis {
     display: flex;
     gap: 10px;
@@ -435,7 +444,6 @@ button.btn-cancel, button.btn-submit {
     margin-bottom: 0;
   }
 
-  /* Ajusta a área de conteúdo da direita para preencher o celular sem esmagar */
   .main-content {
     width: 100%;
     padding: 0;
@@ -443,7 +451,6 @@ button.btn-cancel, button.btn-submit {
 }
 
 @media (max-width: 480px) {
-  /* Alinha os botões de voltar e adicionar verticalmente no celular */
   .sidebar-header {
     flex-direction: column;
     gap: 12px;
@@ -456,7 +463,6 @@ button.btn-cancel, button.btn-submit {
     justify-content: center;
   }
 
-  /* Faz as ações de salvar e excluir ocuparem largura total empilhadas */
   .form-actions-salvar {
     flex-direction: column;
     width: 100%;
@@ -469,7 +475,6 @@ button.btn-cancel, button.btn-submit {
     text-align: center;
   }
 
-  /* Centraliza e ajusta o tamanho do card do modal de criação */
   .rapid-card {
     width: 92%;
     padding: 20px;
