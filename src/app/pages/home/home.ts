@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { Menu } from '../../componentes/menu/menu'; // PRESERVADO: Seu import original do Menu
+import { Menu } from '../../componentes/menu/menu';
 
 interface ApiProjeto {
   nome: string;
@@ -23,14 +23,12 @@ interface ApiProjeto {
   styleUrl: './home.css', 
 })
 export class Home implements OnInit {
-  // Listas reativas para alimentar cada catálogo na sua tela
   listaCarrossel: ApiProjeto[] = [];
   enviadosRecently: ApiProjeto[] = [];
   populares: ApiProjeto[] = [];
   recomendados: ApiProjeto[] = [];
   gemasRaras: ApiProjeto[] = [];
 
-  // Índice para controlar o slide ativo do carrossel de destaques
   carrosselIndexAtivo: number = 0;
 
   constructor(private router: Router) {}
@@ -39,11 +37,9 @@ export class Home implements OnInit {
     this.carregarCatalogosDoSistema();
   }
 
- 
   carregarCatalogosDoSistema() {
     let dados = localStorage.getItem('minhas_apis');
     
-    // Se o LocalStorage estiver vazio (primeiro acesso no link da Vercel)
     if (!dados) {
       const apisIniciais: ApiProjeto[] = [
         {
@@ -52,7 +48,7 @@ export class Home implements OnInit {
           categoria: 'ai',
           precoPlano: '49,90',
           criadorNome: 'Beatriz Ramos',
-          criadorFoto: 'https://unsplash.com',
+          criadorFoto: 'img/WhatsApp Image 2026-09-27 at 21.09.24.jpeg',
           favoritado: false,
           seguindoCriador: false
         },
@@ -62,7 +58,7 @@ export class Home implements OnInit {
           categoria: 'finance',
           precoPlano: '19,90',
           criadorNome: 'Guilherme Santos',
-          criadorFoto: 'https://unsplash.com',
+          criadorFoto: 'img/WhatsApp Image 2026-09-27 at 21.08.32.jpeg',
           favoritado: false,
           seguindoCriador: false
         },
@@ -72,7 +68,7 @@ export class Home implements OnInit {
           categoria: 'tools',
           precoPlano: '0,00',
           criadorNome: 'Mariana Costa',
-          criadorFoto: 'https://unsplash.com',
+          criadorFoto: 'img/WhatsApp Image 2026-09-27 at 21.08.32 (1).jpeg',
           favoritado: false,
           seguindoCriador: false
         },
@@ -82,7 +78,7 @@ export class Home implements OnInit {
           categoria: 'maps',
           precoPlano: '29,90',
           criadorNome: 'Ricardo Almeida',
-          criadorFoto: 'https://unsplash.com',
+          criadorFoto: 'img/WhatsApp Image 2026-09-27 at 20.58.35.jpeg',
           favoritado: false,
           seguindoCriador: false
         },
@@ -92,7 +88,7 @@ export class Home implements OnInit {
           categoria: 'ai',
           precoPlano: '15,90',
           criadorNome: 'Luã',
-          criadorFoto: 'https://unsplash.com',
+          criadorFoto: 'img/WhatsApp Image 2026-09-27 at 20.58.35 (1).jpeg',
           favoritado: false,
           seguindoCriador: false
         },
@@ -102,17 +98,17 @@ export class Home implements OnInit {
           categoria: 'finance',
           precoPlano: '0,00',
           criadorNome: 'Laura',
-          criadorFoto: 'https://unsplash.com',
+          criadorFoto: 'img/WhatsApp Image 2026-09-27 at 21.00.29.jpeg',
           favoritado: false,
           seguindoCriador: false
         },
         {
           nome: 'Secure Auth OAuth2 Service',
-          descricao: 'Autenticação robusta ponta a ponta com tokens JWT, suporte a login social e proteção ativa contra brute-force.',
+          descricao: 'Autenticação robusta ponta a ponta com tokens JWT, suporte a login social e proteção activa contra brute-force.',
           categoria: 'tools',
           precoPlano: '9,90',
           criadorNome: 'Vinícius',
-          criadorFoto: 'http://localhost:3001/vinicius.jpeg', // Aponta para a imagem estática da sua API
+          criadorFoto: 'img/WhatsApp Image 2026-09-27 at 21.00.45.jpeg',
           favoritado: false,
           seguindoCriador: false
         },
@@ -122,7 +118,7 @@ export class Home implements OnInit {
           categoria: 'tools',
           precoPlano: '34,90',
           criadorNome: 'David',
-          criadorFoto: 'https://unsplash.com',
+          criadorFoto: 'img/WhatsApp Image 2026-09-27 at 20.57.05 (1).jpeg',
           favoritado: false,
           seguindoCriador: false
         },
@@ -132,18 +128,28 @@ export class Home implements OnInit {
           categoria: 'data',
           precoPlano: '0,00',
           criadorNome: 'Cauã',
-          criadorFoto: 'https://unsplash.com',
+          criadorFoto: 'img/WhatsApp Image 2026-09-27 at 19.59.47.jpeg',
           favoritado: false,
           seguindoCriador: false
         }
       ];
       localStorage.setItem('minhas_apis', JSON.stringify(apisIniciais));
       dados = JSON.stringify(apisIniciais);
+    } else {
+      const apisExistentes: ApiProjeto[] = JSON.parse(dados);
+      const precisaAtualizar = apisExistentes.some(api => 
+        api.criadorFoto.includes('17.54.06') || api.criadorFoto.includes('unsplash.com')
+      );
+
+      if (precisaAtualizar) {
+        localStorage.removeItem('minhas_apis');
+        this.carregarCatalogosDoSistema();
+        return;
+      }
     }
 
     const todasApis: ApiProjeto[] = JSON.parse(dados);
 
-    // Distribui estrategicamente os cards para os catálogos ficarem cheios e bonitos
     this.listaCarrossel = todasApis.slice(0, 3);   
     this.enviadosRecently = todasApis.slice(0, 4);  
     this.populares = todasApis.slice(3, 7);         
@@ -151,19 +157,16 @@ export class Home implements OnInit {
     this.gemasRaras = todasApis.slice(4, 9);        
   }
 
-  // Sincroniza o favorito diretamente na Home e salva no banco local
   toggleFavoritar(api: ApiProjeto) {
     api.favoritado = !api.favoritado;
     this.salvarAlteracoesGlobais(api);
   }
 
-  // Sincroniza o botão seguir do criador
   toggleSeguir(api: ApiProjeto) {
     api.seguindoCriador = !api.seguindoCriador;
     this.salvarAlteracoesGlobais(api);
   }
 
-  // Lógica de compra unificada para gerar e exibir a chave na tela igual ao Explorar
   assinarEGerarKey(api: ApiProjeto) {
     if (api.apiKey) {
       alert(`Você já possui um plano ativo para esta API.`);
@@ -181,7 +184,6 @@ export class Home implements OnInit {
     alert(`Plano assinado com sucesso! Sua Chave de API foi vinculada ao seu perfil.`);
   }
 
-  // Remove a chave de acesso e limpa o plano ativo para poder resetar o teste
   cancelarAssinatura(api: ApiProjeto) {
     if (confirm(`Tem certeza que deseja cancelar a assinatura da API "${api.nome}"?`)) {
       api.apiKey = undefined; 
@@ -190,7 +192,6 @@ export class Home implements OnInit {
     }
   }
 
-  // Auxiliar para atualizar as modificações em tempo real no localStorage centralizado
   private salvarAlteracoesGlobais(apiModificada: ApiProjeto) {
     const dados = localStorage.getItem('minhas_apis');
     if (dados) {
@@ -205,7 +206,6 @@ export class Home implements OnInit {
     this.carregarCatalogosDoSistema();
   }
 
-  // Funções de controle de navegação do carrossel superior
   proximoSlide() {
     this.carrosselIndexAtivo = (this.carrosselIndexAtivo + 1) % this.listaCarrossel.length;
   }
@@ -218,7 +218,6 @@ export class Home implements OnInit {
     this.carrosselIndexAtivo = index;
   }
 
-  // Redireciona o usuário para ver mais detalhes ou assinar na tela do marketplace
   irParaMarketplace() {
     this.router.navigate(['/explorar']);
   }

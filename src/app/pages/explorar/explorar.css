@@ -1,10 +1,8 @@
-/* Container de navegação superior */
 .header-navigation-area {
   text-align: left;
   margin-bottom: 25px;
 }
 
-/* O Botão principal no estilo vidro escuro com neon */
 .btn-voltar-home {
   background-color: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(8px);
@@ -23,35 +21,44 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Transição individual da setinha */
 .seta-voltar {
   font-size: 1.1rem;
   transition: transform 0.2s ease;
   display: inline-block;
 }
 
-/* Efeito Hover: Quando o mouse passa por cima do botão */
 .btn-voltar-home:hover {
-  color: #00ff66; /* Texto acende em verde neon */
-  border-color: #00ff66; /* Borda acende por completo */
+  color: #00ff66; 
+  border-color: #00ff66; 
   background-color: rgba(0, 255, 102, 0.05); 
   box-shadow: 0 0 15px rgba(0, 255, 102, 0.3), 
-              0 4px 12px rgba(0, 0, 0, 0.5); /* Efeito de brilho neon externo */
+              0 4px 12px rgba(0, 0, 0, 0.5); 
 }
 
-/* Animação da setinha dando um "empurrãozinho" para a esquerda no hover */
 .btn-voltar-home:hover .seta-voltar {
   transform: translateX(-4px);
 }
 
-/* Efeito de clique (Active) */
 .btn-voltar-home:active {
   transform: scale(0.97);
 }
 
-/* RESPONSIVIDADE DO EXPLORAR / MARKETPLACE */
+.explorar-marketplace-container img,
+.criador-foto,
+[style*="border-radius: 50%"],
+img[src*="unsplash.com"] {
+  width: 35px !important;
+  height: 35px !important;
+  min-width: 35px !important;
+  min-height: 35px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
 @media (max-width: 768px) {
-  /* Altera a grade para se empilhar perfeitamente em uma única coluna */
   .explorar-marketplace-container > div[style*="display: grid"] {
     grid-template-columns: 1fr !important;
     gap: 15px !important;
@@ -61,7 +68,6 @@
     font-size: 1.8rem !important;
   }
 
-  /* Ajusta o espaçamento do botão de voltar para a home */
   .header-navigation-area {
     margin-bottom: 15px;
   }

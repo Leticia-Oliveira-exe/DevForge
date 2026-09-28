@@ -59,7 +59,7 @@ export class ExplorarComponent implements OnInit {
         logo: null,
         precoPlano: '49,90',
         criadorNome: 'Beatriz Ramos',
-        criadorFoto: 'https://unsplash.com',
+        criadorFoto: 'img/WhatsApp Image 2026-09-27 at 21.09.24.jpeg',
         favoritado: false,
         seguindoCriador: false
       },
@@ -70,7 +70,7 @@ export class ExplorarComponent implements OnInit {
         logo: null,
         precoPlano: '19,90',
         criadorNome: 'Guilherme Santos',
-        criadorFoto: 'https://unsplash.com',
+        criadorFoto: 'img/WhatsApp Image 2026-09-27 at 21.08.32.jpeg',
         favoritado: false,
         seguindoCriador: false
       },
@@ -81,7 +81,7 @@ export class ExplorarComponent implements OnInit {
         logo: null,
         precoPlano: '0,00',
         criadorNome: 'Mariana Costa',
-        criadorFoto: 'https://unsplash.com',
+        criadorFoto: 'img/WhatsApp Image 2026-09-27 at 21.08.32 (1).jpeg',
         favoritado: false,
         seguindoCriador: false
       },
@@ -92,7 +92,7 @@ export class ExplorarComponent implements OnInit {
         logo: null,
         precoPlano: '29,90',
         criadorNome: 'Ricardo Almeida',
-        criadorFoto: 'https://unsplash.com',
+        criadorFoto: 'img/WhatsApp Image 2026-09-27 at 20.58.35.jpeg',
         favoritado: false,
         seguindoCriador: false
       },
@@ -103,7 +103,7 @@ export class ExplorarComponent implements OnInit {
         logo: null,
         precoPlano: '15,90',
         criadorNome: 'Luã',
-        criadorFoto: 'https://unsplash.com',
+        criadorFoto: 'img/WhatsApp Image 2026-09-27 at 20.58.35 (1).jpeg',
         favoritado: false,
         seguindoCriador: false
       },
@@ -114,7 +114,7 @@ export class ExplorarComponent implements OnInit {
         logo: null,
         precoPlano: '0,00',
         criadorNome: 'Laura',
-        criadorFoto: 'https://unsplash.com',
+        criadorFoto: 'img/WhatsApp Image 2026-09-27 at 21.00.29.jpeg',
         favoritado: false,
         seguindoCriador: false
       },
@@ -125,7 +125,7 @@ export class ExplorarComponent implements OnInit {
         logo: null,
         precoPlano: '9,90',
         criadorNome: 'Vinícius',
-        criadorFoto: 'http://localhost:3001/vinicius.jpeg',
+        criadorFoto: 'img/WhatsApp Image 2026-09-27 at 21.00.45.jpeg',
         favoritado: false,
         seguindoCriador: false
       },
@@ -136,7 +136,7 @@ export class ExplorarComponent implements OnInit {
         logo: null,
         precoPlano: '34,90',
         criadorNome: 'David',
-        criadorFoto: 'https://unsplash.com',
+        criadorFoto: 'img/WhatsApp Image 2026-09-27 at 20.57.05 (1).jpeg',
         favoritado: false,
         seguindoCriador: false
       },
@@ -147,27 +147,15 @@ export class ExplorarComponent implements OnInit {
         logo: null,
         precoPlano: '0,00',
         criadorNome: 'Cauã',
-        criadorFoto: 'https://unsplash.com',
+        criadorFoto: 'img/WhatsApp Image 2026-09-27 at 19.59.47.jpeg',
         favoritado: false,
         seguindoCriador: false
       }
     ];
 
-    const dadosLocais = localStorage.getItem('minhas_apis');
-    
-    if (!dadosLocais) {
-      localStorage.setItem('minhas_apis', JSON.stringify(apisDeExemploPadrao));
-      this.listaDeApis = apisDeExemploPadrao;
-    } else {
-      const apisExistentes = JSON.parse(dadosLocais);
-      
-      if (apisExistentes.length < apisDeExemploPadrao.length) {
-        localStorage.setItem('minhas_apis', JSON.stringify(apisDeExemploPadrao));
-        this.listaDeApis = apisDeExemploPadrao;
-      } else {
-        this.listaDeApis = apisExistentes;
-      }
-    }
+    localStorage.removeItem('minhas_apis');
+    localStorage.setItem('minhas_apis', JSON.stringify(apisDeExemploPadrao));
+    this.listaDeApis = apisDeExemploPadrao;
   }
 
   toggleFavoritar(api: ApiProjeto) {
@@ -182,7 +170,7 @@ export class ExplorarComponent implements OnInit {
 
   assinarEGerarKey(api: ApiProjeto) {
     if (api.apiKey) {
-      alert(`Você já possui um plano ativo para esta API.`);
+      alert(`Você já possui um plano active para esta API.`);
       return;
     }
 
